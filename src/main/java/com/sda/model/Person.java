@@ -36,4 +36,8 @@ public class Person {
     @ToString.Exclude
     @OneToMany(mappedBy = "person")
     private Set<Address> addresses;
+
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "people")
+    private Set<Car> cars;
 }

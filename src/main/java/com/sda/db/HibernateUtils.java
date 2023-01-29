@@ -1,6 +1,7 @@
 package com.sda.db;
 
 import com.sda.model.Address;
+import com.sda.model.Car;
 import com.sda.model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,7 +22,8 @@ public class HibernateUtils {
     private static SessionFactory createSession() {
         Configuration configuration = new Configuration()
                 .addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Address.class);
+                .addAnnotatedClass(Address.class)
+                .addAnnotatedClass(Car.class);
 
         return configuration.buildSessionFactory();
     }

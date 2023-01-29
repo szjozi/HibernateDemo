@@ -1,28 +1,46 @@
 package com.sda;
 
-import com.sda.dao.AddressDAO;
-import com.sda.model.Address;
+import com.sda.dao.CarDAO;
+import com.sda.dao.PersonDAO;
+import com.sda.model.Car;
+import com.sda.model.Equipment;
 import com.sda.model.Person;
+
+import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
-//        PersonDAO personDAO = new PersonDAO();
+        PersonDAO personDAO = new PersonDAO();
+        CarDAO carDAO = new CarDAO();
 
-        AddressDAO addressDAO = new AddressDAO();
+        Person sue = personDAO.findById(1L);
+        Person bob = personDAO.findById(2L);
 
-        Person person = new Person();
-        person.setId(1L);
+        Set<Person> carOwners = Set.of(sue, bob);
 
+        Equipment equipment = new Equipment();
+        equipment.setNumOfSeats(4);
+        equipment.setWinterTires(true);
 
-        Address address = new Address();
-        address.setCity("Manchester");
-        address.setHouseNo("7");
-        address.setStreet("Duchy View");
-        address.setPostCode("PL15 7BQ");
-        address.setPerson(person);
+        Car mercedes = Car.builder()
+                .equipment(equipment)
+                .make("Mercedes")
+                .model("CLS")
+                .color("Black")
+                .people(carOwners)
+                .build();
 
-        addressDAO.create(address);
+        carDAO.create(mercedes);
+
+//        Person person = new Person();
+//        person.setName("Sue");
+//        person.setSurname("Smith");
+//        person.setGender(Gender.FEMALE);
+//        person.setAge(28);
+//
+//        personDAO.create(person);
+
 
     }
 }
