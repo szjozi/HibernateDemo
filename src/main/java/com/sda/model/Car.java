@@ -26,6 +26,11 @@ public class Car {
     private Equipment equipment;
 
     @ManyToMany
+    @JoinTable(
+            name = "car_person",
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
     private Set<Person> people;
 
 }

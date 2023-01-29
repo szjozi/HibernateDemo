@@ -15,11 +15,14 @@ public class HibernateUtils {
         return getSessionFactory().openSession();
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory == null ? createSession() : sessionFactory;
+    private static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            sessionFactory = createSessionFactory();
+        }
+        return sessionFactory;
     }
 
-    private static SessionFactory createSession() {
+    private static SessionFactory createSessionFactory() {
         Configuration configuration = new Configuration()
                 .addAnnotatedClass(Person.class)
                 .addAnnotatedClass(Address.class)
