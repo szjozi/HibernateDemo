@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -31,7 +33,7 @@ public class Person {
 
     private int age;
 
-    @OneToOne(mappedBy = "person")
-    private Address address;
-
+    @ToString.Exclude
+    @OneToMany(mappedBy = "person")
+    private Set<Address> addresses;
 }
