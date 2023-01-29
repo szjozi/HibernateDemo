@@ -1,5 +1,6 @@
 package com.sda.db;
 
+import com.sda.model.Address;
 import com.sda.model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,7 +20,8 @@ public class HibernateUtils {
 
     private static SessionFactory createSession() {
         Configuration configuration = new Configuration()
-                .addAnnotatedClass(Person.class);
+                .addAnnotatedClass(Person.class)
+                .addAnnotatedClass(Address.class);
 
         return configuration.buildSessionFactory();
     }

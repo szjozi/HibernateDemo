@@ -31,4 +31,7 @@ public class Person {
 
     private int age;
 
+    @OneToOne(mappedBy = "person")
+    private Address address;
+
 }
